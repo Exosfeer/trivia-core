@@ -1,31 +1,49 @@
-# Docker
-# Build a Docker image
-# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+# ASP.NET
+# Build and test ASP.NET projects.
+# Add steps that publish symbols, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
 
 trigger:
 - master
 
-resources:
-- repo: self
+pool:
+  vmImage: 'ubuntu-latest'
 
 variables:
-  tag: '$(Build.BuildId)'
+#  solution: '**/*.sln'
+#  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
 
-stages:
-- stage: Build
-  displayName: Build image
-  jobs:
-  - job: Build
-    displayName: Build
-    pool:
-      vmImage: ubuntu-default
-    steps:
-    - task: Docker@2
-      displayName: Build an image
-      inputs:
-        containerRegistry: 'dockerhub'
-        repository: 'trivia-api'
-        command: 'buildAndPush'
-        dockerfile: '$(Build.SourcesDirectory)/trivia-api/Dockerfile'
-        tags: |
-          $(tag)
+steps:
+#-script: donet build --configuration $(buildConfiguration)
+#displayName: 'donet build $(buildConfiguration)'
+#- task: NuGetToolInstaller@1
+#- task: NuGetCommand@2
+#  inputs:
+#    restoreSolution: '$(solution)'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'restore'
+    projects: '**/*.csproj'
+    feedsToUse: 'select'
+  displayName: 'Restoring Nuget Packages'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    arguments: '--no-restore'
+    projects: '**/*.csproj'
+  displayName: 'Building projects'
+#- task: DotNetCoreCLI@2
+#  inputs:
+#    command: 'test'
+#    projects: '**/*Test.csproj'
+#    arguments: '--no-restore'
+#  displayName: 'Running tests projects'
+- task: Docker@2
+  inputs:
+    containerRegistry: 'dockerhub-exosfeer'
+    repository: 'exosfeer/trivia-api'
+    command: 'buildAndPush'
+    arguments: 'ls -la'
+    Dockerfile: '**/Dockerfile'
+  displayName: 'Executing Dockerfile'
