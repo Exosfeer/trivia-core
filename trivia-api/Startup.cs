@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using trivia_api.Hubs;
 
 namespace trivia_api
 {
@@ -24,6 +25,7 @@ namespace trivia_api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,6 +53,12 @@ namespace trivia_api
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapHub<ActiveChat>("/global/chat");
+                endpoints.MapHub<ActiveGame>("/active/games");
+                endpoints.MapHub<ActivePlayer>("/active/players");
+                endpoints.MapHub<CategorySubject>("/api/categories");
+                endpoints.MapHub<SubjectQuestion>("/api/questions");
+                endpoints.MapHub<SubjectQuestionAnswer>("/api/answers");
             });
         }
     }
