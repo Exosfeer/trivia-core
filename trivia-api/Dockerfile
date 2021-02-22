@@ -7,10 +7,10 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["trivia-api/trivia-api.csproj", "trivia-api/"]
-RUN dotnet restore "trivia-api/trivia-api.csproj"
+COPY ["trivia-api.csproj", ""]
+RUN dotnet restore "trivia-api.csproj"
 COPY . .
-WORKDIR "/src/trivia-api"
+WORKDIR "/src"
 RUN dotnet build "trivia-api.csproj" -c Release -o /app/build
 
 FROM build AS publish
