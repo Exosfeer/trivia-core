@@ -26,6 +26,23 @@ namespace trivia_api
         {
             services.AddControllersWithViews();
             services.AddSignalR();
+
+            //Cross-Origin Resource Sharing
+            services.AddCors(options =>
+                options.AddPolicy(
+                    "ClientPolicies", 
+                    policy =>
+                        {
+                            policy
+                            .AllowAnyOrigin()
+                            .AllowCredentials()
+                            .AllowAnyHeader()
+                            .AllowAnyMethod()
+                            //.WithOrigins("https://localhost:49153")
+                            ;
+                        }
+                )
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,16 +60,16 @@ namespace trivia_api
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
-
             app.UseAuthorization();
+            app.UseCors("ClientPolicies");
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapHub<ConnectedClient>("/global/clients");
                 endpoints.MapHub<ActiveChat>("/global/chat");
                 endpoints.MapHub<ActiveGame>("/active/games");
                 endpoints.MapHub<ActivePlayer>("/active/players");
@@ -60,6 +77,7 @@ namespace trivia_api
                 endpoints.MapHub<SubjectQuestion>("/api/questions");
                 endpoints.MapHub<SubjectQuestionAnswer>("/api/answers");
             });
+
         }
     }
 }
