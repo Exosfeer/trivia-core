@@ -19,7 +19,11 @@ namespace trivia_api.Hubs
          */
         public async Task MessageToAll(string message)
         {
-            await Clients.All.SendAsync("ReceiveMessage", message);
+            await Clients.All.SendAsync("ReceiveMessage", new
+            {
+                Sender = Context.User.Identity.Name,
+                Message = message
+            });
         }
 
         /**
@@ -28,7 +32,11 @@ namespace trivia_api.Hubs
          */
         public async Task MessageToCaller(string message)
         {
-            await Clients.Caller.SendAsync("ReceiveMessage", message);
+            await Clients.Caller.SendAsync("ReceiveMessage", new
+            {
+                Sender = Context.User.Identity.Name,
+                Message = message
+            });
         }
 
         /**
@@ -37,7 +45,11 @@ namespace trivia_api.Hubs
          */
         public async Task MessageToOthers(string message)
         {
-            await Clients.Others.SendAsync("ReceiveMessage", message);
+            await Clients.Others.SendAsync("ReceiveMessage", new
+            {
+                Sender = Context.User.Identity.Name,
+                Message = message
+            });
         }
 
         /**
@@ -47,7 +59,11 @@ namespace trivia_api.Hubs
          */
         public async Task MessageToGroup(string groupName, string message)
         {
-            await Clients.Group(groupName).SendAsync("ReceiveMessage", message);
+            await Clients.Group(groupName).SendAsync("ReceiveMessage", new
+            {
+                Sender = Context.User.Identity.Name,
+                Message = message
+            });
         }
 
         /**
