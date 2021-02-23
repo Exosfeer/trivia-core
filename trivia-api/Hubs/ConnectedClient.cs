@@ -1,16 +1,18 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using trivia_api.Hubs.Interfaces;
 
 namespace trivia_api.Hubs
 {
     /**
-     * This class is the default standard for all Hubs used in this IPS project.
+     * This class is a strongly typed SignalR Connected Client HUB for my IPS project.
      * This class allows front-end clients to call any method through the correct rounting path.
-     * Using the default methods defined on https://docs.microsoft.com/aspnet/core/signalr/hubs
-     * 
+     * Using the interface IConnectedClient methods.
      **/
-    public class HubStandard : Hub
+    public class ConnectedClient : Hub<IConnectedClient>
     {
 
         /**
@@ -19,11 +21,7 @@ namespace trivia_api.Hubs
          */
         public async Task MessageToAll(string message)
         {
-            await Clients.All.SendAsync("ReceiveMessage", new
-            {
-                Sender = Context.User.Identity.Name,
-                Message = message
-            });
+            await Clients.All.ReceiveMessage(Context.User.Identity.Name,message);
         }
 
         /**
@@ -32,11 +30,7 @@ namespace trivia_api.Hubs
          */
         public async Task MessageToCaller(string message)
         {
-            await Clients.Caller.SendAsync("ReceiveMessage", new
-            {
-                Sender = Context.User.Identity.Name,
-                Message = message
-            });
+            await Clients.Caller.ReceiveMessage(Context.User.Identity.Name, message);
         }
 
         /**
@@ -45,11 +39,7 @@ namespace trivia_api.Hubs
          */
         public async Task MessageToOthers(string message)
         {
-            await Clients.Others.SendAsync("ReceiveMessage", new
-            {
-                Sender = Context.User.Identity.Name,
-                Message = message
-            });
+            await Clients.Others.ReceiveMessage(Context.User.Identity.Name, message);
         }
 
         /**
@@ -59,11 +49,7 @@ namespace trivia_api.Hubs
          */
         public async Task MessageToGroup(string groupName, string message)
         {
-            await Clients.Group(groupName).SendAsync("ReceiveMessage", new
-            {
-                Sender = Context.User.Identity.Name,
-                Message = message
-            });
+            await Clients.Group(groupName).ReceiveMessage(Context.User.Identity.Name, message);
         }
 
         /**
@@ -75,8 +61,8 @@ namespace trivia_api.Hubs
         public async Task AddClientToGroup(string groupName)
         {
             await Groups.AddToGroupAsync(Context.ConnectionId, groupName);
-            await Clients.Caller.SendAsync("ReceiveMessage", $"You have been added to \"{groupName}\" group");
-            await Clients.Others.SendAsync("ReceiveMessage", $"Client [{Context.ConnectionId}] has been added to \"{groupName}\" group");
+            await Clients.Caller.ReceiveMessage(Context.User.Identity.Name, $"You have been added to \"{groupName}\" group");
+            await Clients.Others.ReceiveMessage(Context.User.Identity.Name, $"Client [{Context.ConnectionId}] has been added to \"{groupName}\" group");
         }
 
         /**
@@ -88,8 +74,8 @@ namespace trivia_api.Hubs
         public async Task RemoveClientFromGroup(string groupName)
         {
             await Groups.RemoveFromGroupAsync(Context.ConnectionId, groupName);
-            await Clients.Caller.SendAsync("ReceiveMessage", $"You have been removed to \"{groupName}\" group");
-            await Clients.Others.SendAsync("ReceiveMessage", $"Client [{Context.ConnectionId}] has been removed to \"{groupName}\" group");
+            await Clients.Caller.ReceiveMessage(Context.User.Identity.Name, $"You have been removed to \"{groupName}\" group");
+            await Clients.Others.ReceiveMessage(Context.User.Identity.Name, $"Client [{Context.ConnectionId}] has been removed to \"{groupName}\" group");
         }
 
         /**
