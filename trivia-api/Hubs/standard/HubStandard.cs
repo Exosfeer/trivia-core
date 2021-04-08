@@ -17,6 +17,19 @@ namespace trivia_api.Hubs
          * Sent the message to all clients, including the client that invokes this method.
          * @message A string that contains a message for a client.
          */
+        public async Task ReceiveMessage(string message)
+        {
+            await Clients.All.SendAsync("ReceiveMessage", new
+            {
+                Sender = Context.User.Identity.Name,
+                Message = message
+            });
+        }
+
+        /**
+         * Sent the message to all clients, including the client that invokes this method.
+         * @message A string that contains a message for a client.
+         */
         public async Task MessageToAll(string message)
         {
             await Clients.All.SendAsync("ReceiveMessage", new
