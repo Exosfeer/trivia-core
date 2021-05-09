@@ -27,6 +27,21 @@ namespace trivia_api.Hubs
         }
 
         /**
+         * Sent the message to all clients, including the client that invokes this method.
+         * @message A string that contains a message for a client.
+         */
+        public async Task BroadcastMessage(string message)
+        {
+            await Clients.All.SendAsync("ReceiveMessage", new
+            {
+                Sender = Context.User.Identity.Name,
+                Message = message
+            });
+        }
+
+
+
+        /**
          * Sent the message to the client that invokes this method.
          * @message A string that contains a message for a client.
          */
@@ -114,5 +129,8 @@ namespace trivia_api.Hubs
             await Groups.RemoveFromGroupAsync(Context.ConnectionId, "ConnectedClients");
             await base.OnDisconnectedAsync(exception);
         }
+
+
+
     }
 }
