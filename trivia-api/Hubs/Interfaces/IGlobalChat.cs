@@ -6,7 +6,7 @@ using trivia_api.Models;
 
 namespace trivia_api.Hubs.Interfaces
 {
-    public interface IConnectedClient
+    public interface IGlobalChat
     {
         Task ReceiveMessage(string sender, string message);
         Task ReceiveMessageObject(ChatMessage messageObject);
