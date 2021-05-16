@@ -5,6 +5,7 @@
     <RootNamespace>trivia_api</RootNamespace>
     <UserSecretsId>93eae8cc-15c0-41ea-8336-86011cb89c99</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+	<LangVersion>latest</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>

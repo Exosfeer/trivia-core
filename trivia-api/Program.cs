@@ -9,7 +9,7 @@ using Microsoft.Extensions.Logging;
 
 namespace trivia_api
 {
-    public class Program
+    public static class Program
     {
         public static void Main(string[] args)
         {
