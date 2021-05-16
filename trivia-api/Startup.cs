@@ -30,24 +30,17 @@ namespace trivia_api
             //Cross-Origin Resource Sharing
             services.AddCors(options =>
                 options.AddPolicy(
-                    "ClientPolicies", builder =>
-                    {
-                        builder.WithOrigins("http://localhost:3000")
-                            .AllowAnyMethod()
+
+                    "ClientPolicies",
+                     builder =>
+                     {
+                         builder
+                            .AllowAnyOrigin()
+                            .AllowCredentials()
                             .AllowAnyHeader()
-                            .AllowCredentials();
-                    }
-                /*,policy =>
-                    {
-                        policy
-                        .AllowAnyOrigin()
-                        .AllowCredentials()
-                        .AllowAnyHeader()
-                        .AllowAnyMethod()
-                        .WithOrigins("https://localhost:3000")
-                        ;
-                    }*/
-                )
+                            .AllowAnyMethod()
+                            .WithOrigins("http://localhost:3000", "https://localhost:3001");
+                     })
             );
         }
 
@@ -75,7 +68,8 @@ namespace trivia_api
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-                endpoints.MapHub<LearningHub>("/learningHub");
+                endpoints.MapHub<HubStandard>("/hubstandard");
+                endpoints.MapHub<GlobalChat>("/globalchat");
                 endpoints.MapHub<ConnectedClient>("/global/clients");
                 endpoints.MapHub<ActiveChat>("/global/chat");
                 endpoints.MapHub<ActiveGame>("/active/games");
