@@ -26,6 +26,11 @@ namespace trivia_api.Hubs
             });
         }
 
+        public void Echo(string name, string message)
+        {
+            Clients.Client(Context.ConnectionId).SendAsync("echo", name, message + " (echo from server)");
+        }
+
         /**
          * Sent the message to all clients, including the client that invokes this method.
          * @message A string that contains a message for a client.
