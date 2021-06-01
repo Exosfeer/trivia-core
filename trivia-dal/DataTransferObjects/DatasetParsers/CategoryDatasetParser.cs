@@ -14,8 +14,8 @@ namespace trivia_dal.DataTransferObjects.DatasetParsers
                 Name = (string)set.Tables[0].Rows[rowIndex][1],
                 Description = (string)set.Tables[0].Rows[rowIndex][2],
                 Poster = (string)set.Tables[0].Rows[rowIndex][3],
-                Published = (DateTime)set.Tables[0].Rows[rowIndex][7],
-                Updated = (DateTime)set.Tables[0].Rows[rowIndex][7],
+                Published = (DateTime)set.Tables[0].Rows[rowIndex][4],
+                Updated = (DateTime)set.Tables[0].Rows[rowIndex][5],
             };
         }
     }
