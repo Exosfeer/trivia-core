@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace trivia_api.Models
+namespace trivia_dal.DataTransferObjects
 {
-    public class Question
+    public class QuestionDTO
     {
         private int id;
         private int questionId;
@@ -16,7 +16,7 @@ namespace trivia_api.Models
 
         public int Id
         {
-            private set => id = value;
+            set => id = value;
             get => id;
         }
         public int QuestionId
@@ -24,7 +24,6 @@ namespace trivia_api.Models
             set => questionId = value;
             get => questionId;
         }
-
         public int CategoryId
         {
             set => categoryId = value;
@@ -62,9 +61,10 @@ namespace trivia_api.Models
             get => updated;
         }
 
-        public Question(int givenId)
+        public QuestionDTO(int id)
         {
-            Id = givenId;
+            Id = id;
         }
+
     }
 }

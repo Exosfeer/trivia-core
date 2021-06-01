@@ -9,7 +9,7 @@ FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
 COPY ["trivia-api.csproj", ""]
 RUN dotnet restore "trivia-api.csproj"
-RUN dotnet user-secrets set Azure:SignalRConnectionString "Endpoint=https://rortzxzsybf4m.service.signalr.net;AccessKey=P1UHZA1XOBGgPEmdOdzY8OlMS6RxgM/jcLjuSx/UmDg=;Version=1.0;"
+#RUN dotnet user-secrets set Azure:SignalRConnectionString "Endpoint=https://rortzxzsybf4m.service.signalr.net;AccessKey=P1UHZA1XOBGgPEmdOdzY8OlMS6RxgM/jcLjuSx/UmDg=;Version=1.0;"
 
 COPY . .
 WORKDIR "/src"

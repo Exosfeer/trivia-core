@@ -1,19 +1,19 @@
 ﻿using System;
 
-namespace trivia_api.Models
+namespace trivia_dal.DataTransferObjects
 {
-    public class Category
+    public class CategoryDTO
     {
         private int id;
         private string name;
         private string description;
-        private string poster;
         private DateTime published;
         private DateTime updated;
+        private string poster;
 
         public int Id
         {
-            private set => id = value;
+            set => id = value;
             get => id;
         }
         public string Name
@@ -42,9 +42,9 @@ namespace trivia_api.Models
             get => updated;
         }
 
-        public Category(int givenId)
+        public CategoryDTO(int id)
         {
-            Id = givenId;
+            Id = id;
         }
     }
 }
