@@ -14,14 +14,11 @@ namespace trivia_view.Models.Converters
                 CategoryDetailViewModel viewModel = new CategoryDetailViewModel()
                 {
                     Id = model.Id,
-                    Plot = model.Plot,
-                    Type = model.Type,
-                    Genre = model.Genre,
-                    Titel = model.Titel,
-                    AantalMinuten = model.AantalMinuten,
-                    Kijkwijzer = model.Kijkwijzer,
-                    Published = model.Published,
+                    Name = model.Name,
+                    Description = model.Description,
                     Poster = model.Poster,
+                    Published = model.Published,
+                    Updated = model.Updated,
 
                 };
                 viewModels.Add(viewModel);
@@ -35,14 +32,11 @@ namespace trivia_view.Models.Converters
             {
                 Category model = new Category(viewModel.Id)
                 {
-                    Plot = viewModel.Plot,
-                    Type = viewModel.Type,
-                    Genre = viewModel.Genre,
-                    Titel = viewModel.Titel,
-                    AantalMinuten = viewModel.AantalMinuten,
-                    Kijkwijzer = viewModel.Kijkwijzer,
-                    Published = viewModel.Published,
+                    Name = viewModel.Name,
+                    Description = viewModel.Description,
                     Poster = viewModel.Poster,
+                    Published = viewModel.Published,
+                    Updated = viewModel.Updated,
 
                 };
                 models.Add(model);

@@ -5,47 +5,61 @@ namespace trivia_view.Models.DetailViewModels
     public class QuestionDetailViewModel
     {
         private int id;
+        private int questionId;
         private int categoryId;
+        private int difficulty;
         private string type;
-        private string inhoud;
-        private int accountId;
+        private string title;
+        private string questionAnswers;
         private DateTime published;
-        private DateTime wijzigingsdatum;
+        private DateTime updated;
 
         public int Id
         {
             set => id = value;
             get => id;
         }
+        public int QuestionId
+        {
+            set => questionId = value;
+            get => questionId;
+        }
+
         public int CategoryId
         {
             set => categoryId = value;
             get => categoryId;
+        }
+
+        public int Difficulty
+        {
+            set => difficulty = value;
+            get => difficulty;
         }
         public string Type
         {
             set => type = value;
             get => type;
         }
-        public string Inhoud
+        public string Title
         {
-            set => inhoud = value;
-            get => inhoud;
+            set => title = value;
+            get => title;
         }
-        public int AccountId
+        public string QuestionAnswers
         {
-            set => accountId = value;
-            get => accountId;
+            set => questionAnswers = value;
+            get => questionAnswers;
         }
         public DateTime Published
         {
             set => published = value;
             get => published;
         }
-        public DateTime Wijzigingsdatum
+        public DateTime Updated
         {
-            set => wijzigingsdatum = value;
-            get => wijzigingsdatum;
+            set => updated = value;
+            get => updated;
         }
 
         public QuestionDetailViewModel()

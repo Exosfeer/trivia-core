@@ -11,12 +11,14 @@ namespace trivia_view.Models.Converters
             QuestionDetailViewModel viewModel = new QuestionDetailViewModel()
             {
                 Id = model.Id,
+                QuestionId = model.QuestionId,
                 CategoryId = model.CategoryId,
+                Difficulty = model.Difficulty,
                 Type = model.Type,
-                Inhoud = model.Inhoud,
-                AccountId = model.AccountId,
+                Title = model.Title,
+                QuestionAnswers = model.QuestionAnswers,
                 Published = model.Published,
-                Wijzigingsdatum = model.Wijzigingsdatum,
+                Updated = model.Updated,
 
             };
             return viewModel;
@@ -29,12 +31,15 @@ namespace trivia_view.Models.Converters
                 QuestionDetailViewModel viewModel = new QuestionDetailViewModel()
                 {
                     Id = model.Id,
+
+                    QuestionId = model.QuestionId,
                     CategoryId = model.CategoryId,
+                    Difficulty = model.Difficulty,
                     Type = model.Type,
-                    Inhoud = model.Inhoud,
-                    AccountId = model.AccountId,
+                    Title = model.Title,
+                    QuestionAnswers = model.QuestionAnswers,
                     Published = model.Published,
-                    Wijzigingsdatum = model.Wijzigingsdatum,
+                    Updated = model.Updated,
 
                 };
                 viewModels.Add(viewModel);
@@ -45,12 +50,15 @@ namespace trivia_view.Models.Converters
         {
             Question model = new Question(viewModel.Id)
             {
+
+                QuestionId = viewModel.QuestionId,
                 CategoryId = viewModel.CategoryId,
+                Difficulty = viewModel.Difficulty,
                 Type = viewModel.Type,
-                Inhoud = viewModel.Inhoud,
-                AccountId = viewModel.AccountId,
+                Title = viewModel.Title,
+                QuestionAnswers = viewModel.QuestionAnswers,
                 Published = viewModel.Published,
-                Wijzigingsdatum = viewModel.Wijzigingsdatum,
+                Updated = viewModel.Updated,
 
             };
 
@@ -63,12 +71,15 @@ namespace trivia_view.Models.Converters
             {
                 Question model = new Question(viewModel.Id)
                 {
+
+                    QuestionId = viewModel.QuestionId,
                     CategoryId = viewModel.CategoryId,
+                    Difficulty = viewModel.Difficulty,
                     Type = viewModel.Type,
-                    Inhoud = viewModel.Inhoud,
-                    AccountId = viewModel.AccountId,
+                    Title = viewModel.Title,
+                    QuestionAnswers = viewModel.QuestionAnswers,
                     Published = viewModel.Published,
-                    Wijzigingsdatum = viewModel.Wijzigingsdatum,
+                    Updated = viewModel.Updated,
 
                 };
                 models.Add(model);

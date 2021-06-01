@@ -5,14 +5,11 @@ namespace trivia_view.Models.DetailViewModels
     public class CategoryDetailViewModel
     {
         private int id;
-        private string plot;
-        private string type;
-        private string genre;
-        private string titel;
-        private int aantalMinuten;
-        private string kijkwijzer;
-        private DateTime published;
+        private string name;
+        private string description;
         private string poster;
+        private DateTime published;
+        private DateTime updated;
 
 
         public int Id
@@ -20,36 +17,15 @@ namespace trivia_view.Models.DetailViewModels
             set => id = value;
             get => id;
         }
-        public int AantalMinuten //minuten
+        public string Name
         {
-            set => aantalMinuten = value;
-            get => aantalMinuten;
+            set => name = value;
+            get => name;
         }
-        public string Plot
+        public string Description
         {
-            set => plot = value;
-            get => plot;
-
-        }
-        public string Type
-        {
-            set => type = value;
-            get => type;
-        }
-        public string Genre
-        {
-            set => genre = value;
-            get => genre;
-        }
-        public string Titel
-        {
-            set => titel = value;
-            get => titel;
-        }
-        public string Kijkwijzer
-        {
-            set => kijkwijzer = value;
-            get => kijkwijzer;
+            set => description = value;
+            get => description;
         }
         public string Poster
         {
@@ -61,6 +37,12 @@ namespace trivia_view.Models.DetailViewModels
             set => published = value;
             get => published;
         }
+        public DateTime Updated
+        {
+            set => updated = value;
+            get => updated;
+        }
+
         public CategoryDetailViewModel()
         {
         }
