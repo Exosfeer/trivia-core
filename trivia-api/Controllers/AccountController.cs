@@ -56,7 +56,8 @@ namespace trivia_view.Controllers
             if (ModelState.IsValid)
             {
                 Account gegevenAccountModel = accountModelConverter.ViewModelToModel(gegevenAccountDetailViewModel);
-                Account ingelogdAccountModel = new Account(accountContainer.Insert(gegevenAccountModel));
+                Account ingelogdAccountModel = new Account();
+                ingelogdAccountModel.Id = accountContainer.Insert(gegevenAccountModel).ToString();
                 AccountDetailViewModel ingelogdAccountViewModel = accountModelConverter.ModelToViewModel(ingelogdAccountModel);
             }
             //return View(gegevenAccountDetailViewModel);
@@ -107,7 +108,7 @@ namespace trivia_view.Controllers
 
                 gegevenAccountDetailViewModel = containerAccountViewModel;
 
-                if (gegevenAccountDetailViewModel.Id != 0)
+                if (gegevenAccountDetailViewModel.Id != "")
                 {
                     HttpContext.Session.SetString("Account", JsonConvert.SerializeObject(gegevenAccountDetailViewModel));
 

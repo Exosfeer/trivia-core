@@ -5,14 +5,14 @@ namespace trivia_view.Models.DetailViewModels
 {
     public class AccountDetailViewModel
     {
-        private int id;
+        private string id;
         private string email;
         private string password;
         private DateTime createdAt;
         private DateTime lastLogin;
         private string username;
 
-        public int Id
+        public string Id
         {
             set => id = value;
             get => id;

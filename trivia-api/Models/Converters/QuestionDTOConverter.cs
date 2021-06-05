@@ -7,8 +7,9 @@ namespace trivia_api.Models.Converters
     {
         public Question DtoToModel(QuestionDTO dto)
         {
-            Question model = new Question(dto.Id)
+            Question model = new Question()
             {
+                Id = dto.Id,
                 QuestionId = dto.QuestionId,
                 CategoryId = dto.CategoryId,
                 Difficulty = dto.Difficulty,

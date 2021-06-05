@@ -42,8 +42,9 @@ namespace trivia_view.Models.Converters
         }
         public Account ViewModelToModel(AccountDetailViewModel viewModel)
         {
-            Account model = new Account(viewModel.Id)
+            Account model = new Account()
             {
+                Id = viewModel.Id,
                 Email = viewModel.Email,
                 Password = viewModel.Password,
                 CreatedAt = viewModel.CreatedAt,
@@ -60,8 +61,9 @@ namespace trivia_view.Models.Converters
             List<Account> models = new List<Account>();
             foreach (AccountDetailViewModel viewModel in viewModels)
             {
-                Account model = new Account(viewModel.Id)
+                Account model = new Account()
                 {
+                    Id = viewModel.Id,
                     Email = viewModel.Email,
                     Password = viewModel.Password,
                     CreatedAt = viewModel.CreatedAt,

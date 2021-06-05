@@ -30,8 +30,9 @@ namespace trivia_view.Models.Converters
             List<Category> models = new List<Category>();
             foreach (CategoryDetailViewModel viewModel in viewModels)
             {
-                Category model = new Category(viewModel.Id)
+                Category model = new Category()
                 {
+                    Id = viewModel.Id,
                     Name = viewModel.Name,
                     Description = viewModel.Description,
                     Poster = viewModel.Poster,

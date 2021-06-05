@@ -42,7 +42,8 @@ namespace trivia_view.Controllers
                 newQuestionDetailViewModel.Difficulty = difficulty;
                 newQuestionDetailViewModel.Type = "TREEVIA_QUESTION";
                 Question nieuweQuestionModel = questionModelConverter.ViewModelToModel(newQuestionDetailViewModel);
-                Question questionModel = new Question(questionContainer.Insert(nieuweQuestionModel));
+                Question questionModel = new Question();
+                questionModel.Id = questionContainer.Insert(nieuweQuestionModel).ToString();
                 QuestionDetailViewModel questionDetailViewModel = questionModelConverter.ModelToViewModel(questionModel);
             }
             return RedirectToAction("Index", "Category");
@@ -62,14 +63,15 @@ namespace trivia_view.Controllers
                 newQuestionDetailViewModel.QuestionAnswers = categoryComment.ToString();
                 newQuestionDetailViewModel.Type = "TREEVIA_ANSWER";
                 Question nieuweQuestionModel = questionModelConverter.ViewModelToModel(newQuestionDetailViewModel);
-                Question questionModel = new Question(questionContainer.Insert(nieuweQuestionModel));
+                Question questionModel = new Question();
+                questionModel.Id = questionContainer.Insert(nieuweQuestionModel).ToString();
                 QuestionDetailViewModel questionDetailViewModel = questionModelConverter.ModelToViewModel(questionModel);
             }
             return RedirectToAction("Index", "Category");
 
         }
 
-        public List<QuestionDetailViewModel> GetCategoryQuestions(int categoryId)
+        public List<QuestionDetailViewModel> GetCategoryQuestions(string categoryId)
         {
             List<QuestionDetailViewModel> returnList = new List<QuestionDetailViewModel>();
 

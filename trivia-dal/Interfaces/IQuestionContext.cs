@@ -8,8 +8,8 @@ namespace trivia_dal.Interfaces
         bool Delete(QuestionDTO question);
         int Insert(QuestionDTO question);
         List<QuestionDTO> GetAll();
-        QuestionDTO GetById(int id);
-        List<QuestionDTO> GetAllByCategoryId(int categoryId);
+        QuestionDTO GetById(string id);
+        List<QuestionDTO> GetAllByCategoryId(string categoryId);
         bool Update(QuestionDTO question);
     }
 }

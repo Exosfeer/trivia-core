@@ -4,7 +4,7 @@ namespace trivia_api.Models
 {
     public class Question
     {
-        private int id;
+        private string id;
         private int questionId;
         private int categoryId;
         private int difficulty;
@@ -14,9 +14,9 @@ namespace trivia_api.Models
         private DateTime published;
         private DateTime updated;
 
-        public int Id
+        public string Id
         {
-            private set => id = value;
+            set => id = value;
             get => id;
         }
         public int QuestionId
@@ -62,9 +62,9 @@ namespace trivia_api.Models
             get => updated;
         }
 
-        public Question(int givenId)
+        public Question()
         {
-            Id = givenId;
+            Id = Guid.NewGuid().ToString();
         }
     }
 }

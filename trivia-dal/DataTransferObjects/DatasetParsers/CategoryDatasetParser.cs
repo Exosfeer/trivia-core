@@ -8,7 +8,7 @@ namespace trivia_dal.DataTransferObjects.DatasetParsers
         public static CategoryDTO DatasetToDataTransferObject(DataSet set, int rowIndex)
         {
             return new CategoryDTO(
-                (int)set.Tables[0].Rows[rowIndex][0] //Id
+                (string)set.Tables[0].Rows[rowIndex][0] //Id
             )
             {
                 Name = (string)set.Tables[0].Rows[rowIndex][1],

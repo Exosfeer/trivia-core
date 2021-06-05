@@ -72,9 +72,9 @@ namespace trivia_dal.Contexts
 
             return dtoList;
         }
-        public QuestionDTO GetById(int questionId)
+        public QuestionDTO GetById(string questionId)
         {
-            QuestionDTO dtoReturn = new QuestionDTO(0);
+            QuestionDTO dtoReturn = new QuestionDTO("");
             DataSet sqlResults = new DataSet();
             string sql = "SELECT * FROM Question WHERE Id = @id";
 
@@ -99,7 +99,7 @@ namespace trivia_dal.Contexts
 
             return dtoReturn;
         }
-        public List<QuestionDTO> GetAllByCategoryId(int categoryId)
+        public List<QuestionDTO> GetAllByCategoryId(string categoryId)
         {
             List<QuestionDTO> returnList = new List<QuestionDTO>();
             DataSet sqlResults = new DataSet();

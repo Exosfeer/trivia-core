@@ -4,7 +4,7 @@ namespace trivia_dal.DataTransferObjects
 {
     public class QuestionDTO
     {
-        private int id;
+        private string id;
         private int questionId;
         private int categoryId;
         private int difficulty;
@@ -14,7 +14,7 @@ namespace trivia_dal.DataTransferObjects
         private DateTime published;
         private DateTime updated;
 
-        public int Id
+        public string Id
         {
             set => id = value;
             get => id;
@@ -61,7 +61,7 @@ namespace trivia_dal.DataTransferObjects
             get => updated;
         }
 
-        public QuestionDTO(int id)
+        public QuestionDTO(string id)
         {
             Id = id;
         }

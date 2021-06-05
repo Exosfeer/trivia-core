@@ -31,7 +31,6 @@ namespace trivia_view.Models.Converters
                 QuestionDetailViewModel viewModel = new QuestionDetailViewModel()
                 {
                     Id = model.Id,
-
                     QuestionId = model.QuestionId,
                     CategoryId = model.CategoryId,
                     Difficulty = model.Difficulty,
@@ -48,9 +47,9 @@ namespace trivia_view.Models.Converters
         }
         public Question ViewModelToModel(QuestionDetailViewModel viewModel)
         {
-            Question model = new Question(viewModel.Id)
+            Question model = new Question()
             {
-
+                Id = viewModel.Id,
                 QuestionId = viewModel.QuestionId,
                 CategoryId = viewModel.CategoryId,
                 Difficulty = viewModel.Difficulty,
@@ -69,7 +68,7 @@ namespace trivia_view.Models.Converters
             List<Question> models = new List<Question>();
             foreach (QuestionDetailViewModel viewModel in viewModels)
             {
-                Question model = new Question(viewModel.Id)
+                Question model = new Question()
                 {
 
                     QuestionId = viewModel.QuestionId,

@@ -106,8 +106,8 @@ namespace trivia_view.Controllers
                 {
                     currentCategoryId = "1";
                 }
-                int category_id = Int16.Parse(currentCategoryId);
-                categorys = container.getAllQuestions(category_id);
+                //int category_id = Int16.Parse(currentCategoryId);
+                categorys = container.getAllQuestions(currentCategoryId);
                 categoryVM.ViewModels = modelConverter.ModelsToViewModels(categorys);
 
                 return View(categoryVM);
@@ -127,8 +127,8 @@ namespace trivia_view.Controllers
                 {
                     currentCategoryId = "1";
                 }
-                int category_id = Int16.Parse(currentCategoryId);
-                categorys = container.getAllQuestionsAnswers(category_id);
+                //int category_id = Int16.Parse(currentCategoryId);
+                categorys = container.getAllQuestionsAnswers(currentCategoryId);
                 categoryVM.ViewModels = modelConverter.ModelsToViewModels(categorys);
 
                 return View(categoryVM);

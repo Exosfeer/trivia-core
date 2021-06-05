@@ -70,9 +70,9 @@ namespace trivia_dal.Contexts
                 throw e;
             }
         }
-        public AccountDTO GetById(int accountId)
+        public AccountDTO GetById(string accountId)
         {
-            AccountDTO dtoReturn = new AccountDTO(0);
+            AccountDTO dtoReturn = new AccountDTO("");
             string sql = "SELECT * FROM Reactie WHERE Id = @id";
             List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
@@ -97,7 +97,7 @@ namespace trivia_dal.Contexts
         }
         public AccountDTO GetByName(AccountDTO account)
         {
-            AccountDTO dtoReturn = new AccountDTO(0);
+            AccountDTO dtoReturn = new AccountDTO("");
             string sql = "SELECT * FROM Account WHERE Email = @email AND Password =  HASHBYTES('SHA1', @password)";
 
             try

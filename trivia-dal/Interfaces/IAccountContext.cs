@@ -5,7 +5,7 @@ namespace trivia_dal.Interfaces
 {
     public interface IAccountContext
     {
-        AccountDTO GetById(int id);
+        AccountDTO GetById(string id);
         AccountDTO GetByName(AccountDTO account);
         List<AccountDTO> GetAll();
         int Insert(AccountDTO account);

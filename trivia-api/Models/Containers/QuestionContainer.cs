@@ -20,7 +20,7 @@ namespace trivia_api.Models.Containers
             return context.Insert(dto);
         }
 
-        public List<Question> GetAllByCategoryId(int categoryId)
+        public List<Question> GetAllByCategoryId(string categoryId)
         {
             QuestionDTOConverter dtoConverter = new QuestionDTOConverter();
             List<Question> returnList = new List<Question>();
@@ -33,12 +33,13 @@ namespace trivia_api.Models.Containers
             return returnList;
         }
 
-        public Question GetById(int id)
+        public Question GetById(string id)
         {
             QuestionDTOConverter dtoConverter = new QuestionDTOConverter();
-            Question returnModel = new Question(id);
+            Question returnModel = new Question();
+            returnModel.Id = id;
 
-            if( context.GetById(id) != null) //TODO: Double check this guard.
+            if ( context.GetById(id) != null) //TODO: Double check this guard.
             {
                 QuestionDTO dto = context.GetById(id);
 

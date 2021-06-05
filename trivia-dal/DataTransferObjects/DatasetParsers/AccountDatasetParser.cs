@@ -8,7 +8,7 @@ namespace trivia_dal.DataTransferObjects.DatasetParsers
         public static AccountDTO DatasetToDataTransferObject(DataSet set, int rowIndex)
         {
             return new AccountDTO(
-                (int)set.Tables[0].Rows[rowIndex][0] //Id
+                (string)set.Tables[0].Rows[rowIndex][0] //Id
             )
             {
                 Email = (string)set.Tables[0].Rows[rowIndex][1],

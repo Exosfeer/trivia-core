@@ -6,8 +6,9 @@ namespace trivia_api.Models.Converters
     {
         public Account DtoToModel(AccountDTO dto)
         {
-            Account model = new Account(dto.Id)
+            Account model = new Account()
             {
+                Id = dto.Id,
                 Email = dto.Email,
                 Password = dto.Password,
                 CreatedAt = dto.CreatedAt,

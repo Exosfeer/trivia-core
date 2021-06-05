@@ -14,10 +14,11 @@ namespace trivia_api.Models.Containers
             this.context = givenContext;
         }
 
-        public Category GetById(int id)
+        public Category GetById(string id)
         {
             CategoryDTOConverter dtoConverter = new CategoryDTOConverter();
-            Category returnModel = new Category(id);
+            Category returnModel = new Category();
+            returnModel.Id = id;
 
             if (context.GetById(id) != null)
             {
@@ -55,7 +56,7 @@ namespace trivia_api.Models.Containers
             return returnList;
         }
 
-        public List<Category> getAllQuestions(int id)
+        public List<Category> getAllQuestions(string id)
         {
             CategoryDTOConverter dtoConverter = new CategoryDTOConverter();
             List<Category> returnList = new List<Category>();
@@ -68,7 +69,7 @@ namespace trivia_api.Models.Containers
             return returnList;
         }
 
-        public List<Category> getAllQuestionsAnswers(int id)
+        public List<Category> getAllQuestionsAnswers(string id)
         {
             CategoryDTOConverter dtoConverter = new CategoryDTOConverter();
             List<Category> returnList = new List<Category>();

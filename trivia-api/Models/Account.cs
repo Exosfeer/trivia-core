@@ -11,16 +11,16 @@ namespace trivia_api.Models
      * */
     public class Account
     {
-        private int id;
+        private string id;
         private string email;
         private string password;
         private DateTime createdAt;
         private DateTime lastLogin;
         private string username;
 
-        public int Id
+        public string Id
         {
-            private set => id = value;
+            set => id = value;
             get => id;
         }
         public string Email
@@ -50,9 +50,9 @@ namespace trivia_api.Models
             get => createdAt;
 
         }
-        public Account(int givenId)
+        public Account()
         {
-            Id = givenId;
+            Id = Guid.NewGuid().ToString();
         }
     }
 }

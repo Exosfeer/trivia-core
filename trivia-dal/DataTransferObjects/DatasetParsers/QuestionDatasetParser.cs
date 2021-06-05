@@ -8,7 +8,7 @@ namespace trivia_dal.DataTransferObjects.DatasetParsers
         public static QuestionDTO DatasetToDataTransferObject(DataSet set, int rowIndex)
         {
             return new QuestionDTO(
-                (int)set.Tables[0].Rows[rowIndex][1] //Id
+                (string)set.Tables[0].Rows[rowIndex][1] //Id
             )
             {
                 QuestionId = (int)set.Tables[0].Rows[rowIndex][2],

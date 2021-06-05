@@ -11,14 +11,14 @@ namespace trivia_dal.DataTransferObjects
      * */
     public class AccountDTO
     {
-        private int id;
+        private string id;
         private string email;
         private string password;
         private DateTime createdAt;
         private DateTime lastLogin;
         private string username;
 
-        public int Id
+        public string Id
         {
             set => id = value;
             get => id;
@@ -51,7 +51,7 @@ namespace trivia_dal.DataTransferObjects
 
         }
 
-        public AccountDTO(int id)
+        public AccountDTO(string id)
         {
             Id = id; //Wijs dit account object een Id toe.
         }

@@ -4,16 +4,16 @@ namespace trivia_api.Models
 {
     public class Category
     {
-        private int id;
+        private string id;
         private string name;
         private string description;
         private string poster;
         private DateTime published;
         private DateTime updated;
 
-        public int Id
+        public string Id
         {
-            private set => id = value;
+            set => id = value;
             get => id;
         }
         public string Name
@@ -42,9 +42,9 @@ namespace trivia_api.Models
             get => updated;
         }
 
-        public Category(int givenId)
+        public Category()
         {
-            Id = givenId;
+            Id = Guid.NewGuid().ToString();
         }
     }
 }

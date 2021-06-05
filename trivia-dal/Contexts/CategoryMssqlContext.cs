@@ -9,7 +9,7 @@ namespace trivia_dal.Contexts
 {
     public class CategoryMssqlContext : MssqlBaseSQLContext, ICategoryContext
     {
-        public List<CategoryDTO> getAllQuestions(int categoryId)
+        public List<CategoryDTO> getAllQuestions(string categoryId)
         {
             List<CategoryDTO> dtoList = new List<CategoryDTO>();
             string query = "SELECT * FROM Questions WHERE category_id='@categoryId' AND type = 'TREEVIA_QUESTION';";
@@ -31,7 +31,7 @@ namespace trivia_dal.Contexts
                 throw e;
             }
         }
-        public List<CategoryDTO> getAllQuestionsAnswers(int categoryId)
+        public List<CategoryDTO> getAllQuestionsAnswers(string categoryId)
         {
             List<CategoryDTO> dtoList = new List<CategoryDTO>();
             string query = "SELECT * FROM  Questions WHERE category_id='@categoryId' AND type = 'TREEVIA_ANSWER';";
@@ -76,9 +76,9 @@ namespace trivia_dal.Contexts
                 throw e;
             }
         }
-        public CategoryDTO GetById(int id)
+        public CategoryDTO GetById(string id)
         {
-            CategoryDTO fetchSqlResult = new CategoryDTO(0); //return 0 dto
+            CategoryDTO fetchSqlResult = new CategoryDTO(""); //return 0 dto
             string query = "SELECT * FROM Category WHERE id = '" + id.ToString() + "';";
 
             try

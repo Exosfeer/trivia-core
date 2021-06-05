@@ -4,7 +4,7 @@ namespace trivia_view.Models.DetailViewModels
 {
     public class CategoryDetailViewModel
     {
-        private int id;
+        private string id;
         private string name;
         private string description;
         private string poster;
@@ -12,7 +12,7 @@ namespace trivia_view.Models.DetailViewModels
         private DateTime updated;
 
 
-        public int Id
+        public string Id
         {
             set => id = value;
             get => id;
