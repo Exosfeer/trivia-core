@@ -5,10 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.SqlServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using trivia_api.Hubs;
+using trivia_api.ORM;
 
 namespace trivia_api
 {
@@ -25,6 +28,16 @@ namespace trivia_api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            //ORM-setup with Entity Framework
+            var connectionString = @"Server=mssql.fhict.local;Database=dbi458461;User Id=dbi458461;Password=M@?NSr_qHc$eFe9&";
+            services
+                .AddDbContext<TreeviaDbContext>(
+                    options => options.UseSqlServer(connectionString)
+                );
+            ;
+
+            //Real-time channels with SignalR
             services.AddSignalR();
 
             //Cross-Origin Resource Sharing

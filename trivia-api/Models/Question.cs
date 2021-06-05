@@ -4,7 +4,12 @@ namespace trivia_api.Models
 {
     public class Question
     {
+<<<<<<< Updated upstream
         private int id;
+=======
+        private string id;
+        private int questionId;
+>>>>>>> Stashed changes
         private int categoryId;
         private int difficulty;
         private string title;
@@ -12,9 +17,9 @@ namespace trivia_api.Models
         private DateTime createdAt;
         private DateTime updatedAt;
 
-        public int Id
+        public string Id
         {
-            private set => id = value;
+            set => id = value;
             get => id;
         }
 
@@ -50,9 +55,9 @@ namespace trivia_api.Models
             get => updatedAt;
         }
 
-        public Question(int givenId)
+        public Question()
         {
-            Id = givenId;
+            Id = Guid.NewGuid().ToString();
         }
     }
 }
