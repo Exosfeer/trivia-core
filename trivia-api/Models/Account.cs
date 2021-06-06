@@ -53,6 +53,7 @@ namespace trivia_api.Models
         public Account()
         {
             Id = Guid.NewGuid().ToString();
+            CreatedAt = DateTime.Now;
         }
     }
 }

@@ -5,12 +5,14 @@ namespace trivia_api.Models
     public class Question
     {
         private string id;
-        private int questionId;
-        private int categoryId;
-        private int difficulty;
+        private string questionId;
+        private string categoryId;
+        private string difficulty;
         private string type;
         private string title;
-        private string questionAnswers;
+        //private string questionAnswers;
+        private string correctAnswer;
+        private string[] incorrectAnswers;
         private DateTime published;
         private DateTime updated;
 
@@ -19,19 +21,19 @@ namespace trivia_api.Models
             set => id = value;
             get => id;
         }
-        public int QuestionId
+        public string QuestionId
         {
             set => questionId = value;
             get => questionId;
         }
 
-        public int CategoryId
+        public string CategoryId
         {
             set => categoryId = value;
             get => categoryId;
         }
 
-        public int Difficulty
+        public string Difficulty
         {
             set => difficulty = value;
             get => difficulty;
@@ -46,10 +48,20 @@ namespace trivia_api.Models
             set => title = value;
             get => title;
         }
-        public string QuestionAnswers
+/*        public string QuestionAnswers
         {
             set => questionAnswers = value;
             get => questionAnswers;
+        }*/
+        public string CorrectAnswer
+        {
+            set => correctAnswer = value;
+            get => correctAnswer;
+        }
+        public string[] IncorrectAnswer
+        {
+            set => incorrectAnswers = value;
+            get => incorrectAnswers;
         }
         public DateTime Published
         {
@@ -65,6 +77,7 @@ namespace trivia_api.Models
         public Question()
         {
             Id = Guid.NewGuid().ToString();
+            Published = DateTime.Now;
         }
     }
 }
