@@ -66,6 +66,7 @@ namespace trivia_api.Controllers
         public IActionResult Create()
         {
             Question newModel = new Question();
+            newModel.Published = DateTime.Now;
             return View(newModel);
         }
 
@@ -74,7 +75,7 @@ namespace trivia_api.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,QuestionId,CategoryId,Difficulty,Type,Title,QuestionAnswers,Published,Updated")] Question question)
+        public async Task<IActionResult> Create([Bind("Id,SourceAPI,CategoryId,Difficulty,Type,Title,CorrectAnswer,IncorrectAnswers,Published,Updated")] Question question)
         {
             if (ModelState.IsValid)
             {
@@ -106,7 +107,7 @@ namespace trivia_api.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,QuestionId,CategoryId,Difficulty,Type,Title,QuestionAnswers,Published,Updated")] Question question)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,SourceAPI,CategoryId,Difficulty,Type,Title,CorrectAnswer,IncorrectAnswers,Published,Updated")] Question question)
         {
             if (id != question.Id)
             {

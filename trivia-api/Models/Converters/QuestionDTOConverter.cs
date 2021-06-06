@@ -10,12 +10,13 @@ namespace trivia_api.Models.Converters
             Question model = new Question()
             {
                 Id = dto.Id,
-                QuestionId = dto.QuestionId,
+                SourceAPI = dto.SourceAPI,
                 CategoryId = dto.CategoryId,
                 Difficulty = dto.Difficulty,
                 Type = dto.Type,
                 Title = dto.Title,
-                QuestionAnswers = dto.QuestionAnswers,
+                CorrectAnswer = dto.CorrectAnswer,
+                IncorrectAnswers = dto.IncorrectAnswers,
                 Published = dto.Published,
                 Updated = dto.Updated,
             };
@@ -27,12 +28,13 @@ namespace trivia_api.Models.Converters
         {
             QuestionDTO dto = new QuestionDTO(model.Id)
             {
-                QuestionId = model.QuestionId,
+                SourceAPI = model.SourceAPI,
                 CategoryId = model.CategoryId,
                 Difficulty = model.Difficulty,
                 Type = model.Type,
                 Title = model.Title,
-                QuestionAnswers = model.QuestionAnswers,
+                CorrectAnswer = model.CorrectAnswer,
+                IncorrectAnswers = model.IncorrectAnswers,
                 Published = model.Published,
                 Updated = model.Updated,
             };

@@ -11,14 +11,15 @@ namespace trivia_dal.DataTransferObjects.DatasetParsers
                 (string)set.Tables[0].Rows[rowIndex][1] //Id
             )
             {
-                QuestionId = (int)set.Tables[0].Rows[rowIndex][2],
-                CategoryId = (int)set.Tables[0].Rows[rowIndex][3],
-                Difficulty = (int)set.Tables[0].Rows[rowIndex][4],
+                SourceAPI = (string)set.Tables[0].Rows[rowIndex][2],
+                CategoryId = (string)set.Tables[0].Rows[rowIndex][3],
+                Difficulty = (string)set.Tables[0].Rows[rowIndex][4],
                 Type = (string)set.Tables[0].Rows[rowIndex][5],
                 Title = (string)set.Tables[0].Rows[rowIndex][6],
-                QuestionAnswers = (string)set.Tables[0].Rows[rowIndex][7],
-                Published = (DateTime)set.Tables[0].Rows[rowIndex][8],
-                Updated = (DateTime)set.Tables[0].Rows[rowIndex][9],
+                CorrectAnswer = (string)set.Tables[0].Rows[rowIndex][7],
+                IncorrectAnswers = (string)set.Tables[0].Rows[rowIndex][8],
+                Published = (DateTime)set.Tables[0].Rows[rowIndex][9],
+                Updated = (DateTime)set.Tables[0].Rows[rowIndex][10],
             };
         }
     }

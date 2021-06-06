@@ -33,12 +33,13 @@ namespace trivia_dal.Contexts
                 string sql = "INSERT INTO Question(inhoud, type) OUTPUT INSERTED.id VALUES(@inhoud, @type)";//create reaction sql entry
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
-                    new KeyValuePair<string, string>("questionId", current.QuestionId.ToString()),
+                    new KeyValuePair<string, string>("sourceAPI", current.SourceAPI.ToString()),
                     new KeyValuePair<string, string>("categoryId", current.CategoryId.ToString()),
                     new KeyValuePair<string, string>("difficulty", current.Difficulty.ToString()),
                     new KeyValuePair<string, string>("type", current.Type),
                     new KeyValuePair<string, string>("title", current.Type),
-                    new KeyValuePair<string, string>("questionAnswers", current.QuestionAnswers),
+                    new KeyValuePair<string, string>("correctAnswer", current.CorrectAnswer),
+                   // new KeyValuePair<string, string[]>("incorrectAnswers", current.IncorrectAnswers),
                 };//create reactionItem parameters entry
                 int questionId = ExecuteInsert(sql, parameters);//add question entry
 
@@ -137,7 +138,7 @@ namespace trivia_dal.Contexts
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
                     new KeyValuePair<string, string>("id", current.Id.ToString()),
-                    new KeyValuePair<string, string>("questionId", current.QuestionId.ToString()),
+                    new KeyValuePair<string, string>("sourceAPI", current.SourceAPI.ToString()),
                     new KeyValuePair<string, string>("categoryId", current.CategoryId.ToString()),
                     new KeyValuePair<string, string>("difficulty", current.Difficulty.ToString()),
                     new KeyValuePair<string, string>("type", current.Type.ToString()),            

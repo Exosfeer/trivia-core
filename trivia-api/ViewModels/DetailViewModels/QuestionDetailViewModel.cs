@@ -5,12 +5,14 @@ namespace trivia_view.Models.DetailViewModels
     public class QuestionDetailViewModel
     {
         private string id;
-        private int questionId;
-        private int categoryId;
-        private int difficulty;
+        private string sourceAPI;
+        private string categoryId;
+        private string difficulty;
         private string type;
         private string title;
-        private string questionAnswers;
+        //private string questionAnswers;
+        private string correctAnswer;
+        private string incorrectAnswers;
         private DateTime published;
         private DateTime updated;
 
@@ -19,19 +21,19 @@ namespace trivia_view.Models.DetailViewModels
             set => id = value;
             get => id;
         }
-        public int QuestionId
+        public string SourceAPI
         {
-            set => questionId = value;
-            get => questionId;
+            set => sourceAPI = value;
+            get => sourceAPI;
         }
 
-        public int CategoryId
+        public string CategoryId
         {
             set => categoryId = value;
             get => categoryId;
         }
 
-        public int Difficulty
+        public string Difficulty
         {
             set => difficulty = value;
             get => difficulty;
@@ -46,10 +48,20 @@ namespace trivia_view.Models.DetailViewModels
             set => title = value;
             get => title;
         }
-        public string QuestionAnswers
+        /*        public string QuestionAnswers
+                {
+                    set => questionAnswers = value;
+                    get => questionAnswers;
+                }*/
+        public string CorrectAnswer
         {
-            set => questionAnswers = value;
-            get => questionAnswers;
+            set => correctAnswer = value;
+            get => correctAnswer;
+        }
+        public string IncorrectAnswers
+        {
+            set => incorrectAnswers = value;
+            get => incorrectAnswers;
         }
         public DateTime Published
         {

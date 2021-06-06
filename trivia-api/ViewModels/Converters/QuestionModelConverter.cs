@@ -11,12 +11,13 @@ namespace trivia_view.Models.Converters
             QuestionDetailViewModel viewModel = new QuestionDetailViewModel()
             {
                 Id = model.Id,
-                QuestionId = model.QuestionId,
+                SourceAPI = model.SourceAPI,
                 CategoryId = model.CategoryId,
                 Difficulty = model.Difficulty,
                 Type = model.Type,
                 Title = model.Title,
-                QuestionAnswers = model.QuestionAnswers,
+                CorrectAnswer = model.CorrectAnswer,
+                IncorrectAnswers = model.IncorrectAnswers,
                 Published = model.Published,
                 Updated = model.Updated,
 
@@ -31,12 +32,13 @@ namespace trivia_view.Models.Converters
                 QuestionDetailViewModel viewModel = new QuestionDetailViewModel()
                 {
                     Id = model.Id,
-                    QuestionId = model.QuestionId,
+                    SourceAPI = model.SourceAPI,
                     CategoryId = model.CategoryId,
                     Difficulty = model.Difficulty,
                     Type = model.Type,
                     Title = model.Title,
-                    QuestionAnswers = model.QuestionAnswers,
+                    CorrectAnswer = model.CorrectAnswer,
+                    IncorrectAnswers = model.IncorrectAnswers,
                     Published = model.Published,
                     Updated = model.Updated,
 
@@ -50,12 +52,13 @@ namespace trivia_view.Models.Converters
             Question model = new Question()
             {
                 Id = viewModel.Id,
-                QuestionId = viewModel.QuestionId,
+                SourceAPI = viewModel.SourceAPI,
                 CategoryId = viewModel.CategoryId,
                 Difficulty = viewModel.Difficulty,
                 Type = viewModel.Type,
                 Title = viewModel.Title,
-                QuestionAnswers = viewModel.QuestionAnswers,
+                CorrectAnswer = viewModel.CorrectAnswer,
+                IncorrectAnswers = viewModel.IncorrectAnswers,
                 Published = viewModel.Published,
                 Updated = viewModel.Updated,
 
@@ -71,12 +74,13 @@ namespace trivia_view.Models.Converters
                 Question model = new Question()
                 {
 
-                    QuestionId = viewModel.QuestionId,
+                    SourceAPI = viewModel.SourceAPI,
                     CategoryId = viewModel.CategoryId,
                     Difficulty = viewModel.Difficulty,
                     Type = viewModel.Type,
                     Title = viewModel.Title,
-                    QuestionAnswers = viewModel.QuestionAnswers,
+                    CorrectAnswer = viewModel.CorrectAnswer,
+                    IncorrectAnswers = viewModel.IncorrectAnswers,
                     Published = viewModel.Published,
                     Updated = viewModel.Updated,
 

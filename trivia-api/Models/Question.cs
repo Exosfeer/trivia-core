@@ -5,14 +5,14 @@ namespace trivia_api.Models
     public class Question
     {
         private string id;
-        private string questionId;
         private string categoryId;
+        private string sourceAPI;
         private string difficulty;
         private string type;
         private string title;
         //private string questionAnswers;
         private string correctAnswer;
-        private string[] incorrectAnswers;
+        private string incorrectAnswers;
         private DateTime published;
         private DateTime updated;
 
@@ -21,10 +21,10 @@ namespace trivia_api.Models
             set => id = value;
             get => id;
         }
-        public string QuestionId
+        public string SourceAPI
         {
-            set => questionId = value;
-            get => questionId;
+            set => sourceAPI = value;
+            get => sourceAPI;
         }
 
         public string CategoryId
@@ -48,17 +48,12 @@ namespace trivia_api.Models
             set => title = value;
             get => title;
         }
-/*        public string QuestionAnswers
-        {
-            set => questionAnswers = value;
-            get => questionAnswers;
-        }*/
         public string CorrectAnswer
         {
             set => correctAnswer = value;
             get => correctAnswer;
         }
-        public string[] IncorrectAnswer
+        public string IncorrectAnswers
         {
             set => incorrectAnswers = value;
             get => incorrectAnswers;

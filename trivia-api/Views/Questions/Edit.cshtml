@@ -14,9 +14,9 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="QuestionId" class="control-label"></label>
-                <input asp-for="QuestionId" class="form-control" />
-                <span asp-validation-for="QuestionId" class="text-danger"></span>
+                <label asp-for="SourceAPI" class="control-label"></label>
+                <input asp-for="SourceAPI" class="form-control" />
+                <span asp-validation-for="SourceAPI" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CategoryId" class="control-label"></label>
@@ -39,9 +39,14 @@
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="QuestionAnswers" class="control-label"></label>
-                <input asp-for="QuestionAnswers" class="form-control" />
-                <span asp-validation-for="QuestionAnswers" class="text-danger"></span>
+                <label asp-for="CorrectAnswer" class="control-label"></label>
+                <input asp-for="CorrectAnswer" class="form-control" />
+                <span asp-validation-for="CorrectAnswer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IncorrectAnswers" class="control-label"></label>
+                <input asp-for="IncorrectAnswers" class="form-control" />
+                <span asp-validation-for="IncorrectAnswers" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Published" class="control-label"></label>

@@ -30,7 +30,7 @@ namespace trivia_view.Controllers
         }
 
 
-        public IActionResult CategoryAccountQuestions(int categoryId, int accountId, int difficulty = 0)
+        public IActionResult CategoryAccountQuestions(string categoryId, string accountId, string difficulty = "EASY")
         {
             if (ModelState.IsValid && (HttpContext.Session.GetString("Account") != null))
             {
@@ -38,7 +38,7 @@ namespace trivia_view.Controllers
                 QuestionModelConverter questionModelConverter = new QuestionModelConverter();
                 QuestionDetailViewModel newQuestionDetailViewModel = new QuestionDetailViewModel();
                 newQuestionDetailViewModel.CategoryId = categoryId;
-                newQuestionDetailViewModel.QuestionId = accountId;
+                newQuestionDetailViewModel.SourceAPI = accountId;
                 newQuestionDetailViewModel.Difficulty = difficulty;
                 newQuestionDetailViewModel.Type = "TREEVIA_QUESTION";
                 Question nieuweQuestionModel = questionModelConverter.ViewModelToModel(newQuestionDetailViewModel);
@@ -51,16 +51,16 @@ namespace trivia_view.Controllers
         }
 
 
-        public IActionResult CategoryAccountQuestionsAnswers(int categoryId, int accountId, string categoryComment)
+        public IActionResult CategoryAccountQuestionsAnswers(string categoryId, string sourceAPI, string categoryComment)
         {
             if (ModelState.IsValid && (HttpContext.Session.GetString("Account") != null))
             {
-
                 QuestionModelConverter questionModelConverter = new QuestionModelConverter();
                 QuestionDetailViewModel newQuestionDetailViewModel = new QuestionDetailViewModel();
                 newQuestionDetailViewModel.CategoryId = categoryId;
-                newQuestionDetailViewModel.QuestionId = accountId;
-                newQuestionDetailViewModel.QuestionAnswers = categoryComment.ToString();
+                newQuestionDetailViewModel.SourceAPI = sourceAPI;
+                newQuestionDetailViewModel.CorrectAnswer = categoryComment.ToString();
+                newQuestionDetailViewModel.IncorrectAnswers = categoryComment.ToString();
                 newQuestionDetailViewModel.Type = "TREEVIA_ANSWER";
                 Question nieuweQuestionModel = questionModelConverter.ViewModelToModel(newQuestionDetailViewModel);
                 Question questionModel = new Question();

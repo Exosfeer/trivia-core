@@ -13,7 +13,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.QuestionId)
+                @Html.DisplayNameFor(model => model.SourceAPI)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CategoryId)
@@ -28,7 +28,10 @@
                 @Html.DisplayNameFor(model => model.Title)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.QuestionAnswers)
+                @Html.DisplayNameFor(model => model.CorrectAnswer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IncorrectAnswers)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Published)
@@ -43,7 +46,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.QuestionId)
+                @Html.DisplayFor(modelItem => item.SourceAPI)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CategoryId)
@@ -58,7 +61,10 @@
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.QuestionAnswers)
+                @Html.DisplayFor(modelItem => item.CorrectAnswer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IncorrectAnswers)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Published)
