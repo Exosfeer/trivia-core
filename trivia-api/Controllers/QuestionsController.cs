@@ -65,7 +65,8 @@ namespace trivia_api.Controllers
         // GET: Questions/Create
         public IActionResult Create()
         {
-            return View();
+            Question newModel = new Question();
+            return View(newModel);
         }
 
         // POST: Questions/Create
