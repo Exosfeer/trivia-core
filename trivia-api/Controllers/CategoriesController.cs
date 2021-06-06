@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using trivia_api.Models;
 using trivia_api.ORM;
+using Newtonsoft.Json;
 
 namespace trivia_api.Controllers
 {
@@ -41,6 +42,24 @@ namespace trivia_api.Controllers
             }
 
             return View(category);
+        }
+
+        // GET: Categories/Json/5
+        public async Task<String> Json(string id)
+        {
+            if (id == null)
+            {
+                return "not found";
+            }
+
+            var account = await _context.Account
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (account == null)
+            {
+                return "not found";
+            }
+
+            return JsonConvert.SerializeObject(account);
         }
 
         // GET: Categories/Create
