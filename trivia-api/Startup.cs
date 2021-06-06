@@ -27,7 +27,9 @@ namespace trivia_api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddControllersWithViews()
+                .AddRazorRuntimeCompilation();
+
 
             //ORM-setup with Entity Framework
             var connectionString = @"Server=mssql.fhict.local;Database=dbi458461;User Id=dbi458461;Password=M@?NSr_qHc$eFe9&";
