@@ -52,14 +52,14 @@ namespace trivia_api.Controllers
                 return "not found";
             }
 
-            var account = await _context.Account
+            var question = await _context.Question
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (account == null)
+            if (question == null)
             {
                 return "not found";
             }
 
-            return JsonConvert.SerializeObject(account);
+            return JsonConvert.SerializeObject(question);
         }
 
         // GET: Questions/Create
