@@ -84,13 +84,13 @@ namespace trivia_api
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapHub<HubStandard>("/hubstandard");
                 endpoints.MapHub<GlobalChat>("/globalchat");
-                endpoints.MapHub<ConnectedClient>("/global/clients");
-                endpoints.MapHub<ActiveChat>("/global/chat");
-                endpoints.MapHub<ActiveGame>("/active/games");
-                endpoints.MapHub<ActivePlayer>("/active/players");
-                endpoints.MapHub<CategorySubject>("/api/categories");
-                endpoints.MapHub<SubjectQuestion>("/api/questions");
-                endpoints.MapHub<SubjectQuestionAnswer>("/api/answers");
+                endpoints.MapHub<ConnectedClient>("/global-clients");
+                endpoints.MapHub<ActiveChat>("/lobby-chat");
+                endpoints.MapHub<ActiveGame>("/active-games");
+                endpoints.MapHub<ActivePlayer>("/active-players");
+                endpoints.MapHub<CategorySubject>("/api-categories");
+                endpoints.MapHub<SubjectQuestion>("/api-questions");
+                endpoints.MapHub<SubjectQuestionAnswer>("/api-answers");
             });
 
         }
