@@ -54,6 +54,7 @@ namespace trivia_api.Models
         {
             Id = Guid.NewGuid().ToString();
             CreatedAt = DateTime.Now;
+            LastLogin = DateTime.Now;
         }
     }
 }

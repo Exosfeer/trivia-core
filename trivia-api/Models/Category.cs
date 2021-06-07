@@ -46,6 +46,7 @@ namespace trivia_api.Models
         {
             Id = Guid.NewGuid().ToString();
             Published = DateTime.Now;
+            Updated = DateTime.Now;
         }
     }
 }
