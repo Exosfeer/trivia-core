@@ -1,39 +1,29 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.SignalR;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Security.Claims;
 
 namespace trivia_api.Models
 {
     public class ChatMessage
     {
-        private int id;
-        private string sender;
+        private string senderConnectionId;
         private string message;
-        private string displayname;
         private DateTime timestamp;
 
-        public int Id
+        public string SenderConnectionId
         {
-            set => id = value;
-            get => id;
+            set => senderConnectionId = value;
+            get => senderConnectionId;
         }
-        public string Sender
-        {
-            set => sender = value;
-            get => sender;
-        }
+        public ClaimsPrincipal Sender{ set; get;}
         public string Message
         {
             set => message = value;
             get => message;
         }
-        public string Displayname
-        {
-            set => displayname = value;
-            get => displayname;
-        }
-
         public DateTime Timestamp
         {
             set => timestamp = value;

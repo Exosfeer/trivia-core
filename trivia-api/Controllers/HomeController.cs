@@ -23,7 +23,7 @@ namespace trivia_api.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Signalr()
         {
             return View();
         }

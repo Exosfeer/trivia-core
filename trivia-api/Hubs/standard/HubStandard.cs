@@ -34,8 +34,9 @@ namespace trivia_api.Hubs
         {
             await Clients.All.SendAsync("ReceiveMessage", new
             {
-                Sender = Context.User.Identity.Name,
-                Message = message
+                SenderConnectionId = Context.ConnectionId,
+                Sender = Context.User,
+                Message = message,
             });
         }
 

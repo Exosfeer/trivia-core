@@ -22,7 +22,15 @@ namespace trivia_api.Hubs
          */
         public async Task MessageToAll(string message)
         {
-            await Clients.All.ReceiveMessage(Context.User.Identity.Name,message);
+            ChatMessage messageObject = new ChatMessage()
+            {
+                SenderConnectionId = Context.ConnectionId,
+                Sender = Context.User,
+                Message = message,
+                Timestamp = DateTime.Now
+
+            };
+            await Clients.All.ReceiveMessage(messageObject);
         }
 
         /**
@@ -33,17 +41,16 @@ namespace trivia_api.Hubs
         {
             ChatMessage messageObject = new ChatMessage()
             {
-                //Id = Context.User.Identity.Name,
-                Id = 1337,
-                Sender = "client-1337",
+                SenderConnectionId = Context.ConnectionId,
+                Sender = Context.User,
                 Message = message,
-                Displayname = "displayname1",
                 Timestamp = DateTime.Now
 
             };
-            //await Clients.All.ReceiveMessage(Context.User.Identity.Name, message);
-            await Clients.All.ReceiveMessageObject(messageObject);
+            await Clients.All.ReceiveMessage(messageObject);
 
+/*            await Clients.All.ReceiveMessageObject(messageObject);
+*/
             //sentmessage
         }
 
@@ -53,7 +60,15 @@ namespace trivia_api.Hubs
          */
         public async Task MessageToCaller(string message)
         {
-            await Clients.Caller.ReceiveMessage(Context.User.Identity.Name, message);
+            ChatMessage messageObject = new ChatMessage()
+            {
+                SenderConnectionId = Context.ConnectionId,
+                Sender = Context.User,
+                Message = message,
+                Timestamp = DateTime.Now
+
+            };
+            await Clients.Caller.ReceiveMessage(messageObject);
         }
 
         /**
@@ -62,7 +77,15 @@ namespace trivia_api.Hubs
          */
         public async Task MessageToOthers(string message)
         {
-            await Clients.Others.ReceiveMessage(Context.User.Identity.Name, message);
+            ChatMessage messageObject = new ChatMessage()
+            {
+                SenderConnectionId = Context.ConnectionId,
+                Sender = Context.User,
+                Message = message,
+                Timestamp = DateTime.Now
+
+            };
+            await Clients.Others.ReceiveMessage(messageObject);
         }
 
         /**
@@ -72,7 +95,15 @@ namespace trivia_api.Hubs
          */
         public async Task MessageToGroup(string groupName, string message)
         {
-            await Clients.Group(groupName).ReceiveMessage(Context.User.Identity.Name, message);
+            ChatMessage messageObject = new ChatMessage()
+            {
+                SenderConnectionId = Context.ConnectionId,
+                Sender = Context.User,
+                Message = message,
+                Timestamp = DateTime.Now
+
+            };
+            await Clients.Group(groupName).ReceiveMessage(messageObject);
         }
 
         /**
@@ -83,9 +114,25 @@ namespace trivia_api.Hubs
          */
         public async Task AddClientToGroup(string groupName)
         {
+            ChatMessage messageObjectCaller = new ChatMessage()
+            {
+                SenderConnectionId = Context.ConnectionId,
+                Sender = Context.User,
+                Message = "You have been added to \"{groupName}\" group",
+                Timestamp = DateTime.Now
+
+            };
+            ChatMessage messageObjectOthers = new ChatMessage()
+            {
+                SenderConnectionId = Context.ConnectionId,
+                Sender = Context.User,
+                Message = "Client [{Context.ConnectionId}] has been added to \"{groupName}\" group",
+                Timestamp = DateTime.Now
+
+            };
             await Groups.AddToGroupAsync(Context.ConnectionId, groupName);
-            await Clients.Caller.ReceiveMessage(Context.User.Identity.Name, $"You have been added to \"{groupName}\" group");
-            await Clients.Others.ReceiveMessage(Context.User.Identity.Name, $"Client [{Context.ConnectionId}] has been added to \"{groupName}\" group");
+            await Clients.Caller.ReceiveMessage(messageObjectCaller);
+            await Clients.Others.ReceiveMessage(messageObjectOthers);
         }
 
         /**
@@ -96,9 +143,25 @@ namespace trivia_api.Hubs
          */
         public async Task RemoveClientFromGroup(string groupName)
         {
+            ChatMessage messageObjectCaller = new ChatMessage()
+            {
+                SenderConnectionId = Context.ConnectionId,
+                Sender = Context.User,
+                Message = "You have been removed to \"{groupName}\" group",
+                Timestamp = DateTime.Now
+
+            };
+            ChatMessage messageObjectOthers = new ChatMessage()
+            {
+                SenderConnectionId = Context.ConnectionId,
+                Sender = Context.User,
+                Message = "Client [{Context.ConnectionId}] has been removed to \"{groupName}\" group",
+                Timestamp = DateTime.Now
+
+            };
             await Groups.RemoveFromGroupAsync(Context.ConnectionId, groupName);
-            await Clients.Caller.ReceiveMessage(Context.User.Identity.Name, $"You have been removed to \"{groupName}\" group");
-            await Clients.Others.ReceiveMessage(Context.User.Identity.Name, $"Client [{Context.ConnectionId}] has been removed to \"{groupName}\" group");
+            await Clients.Caller.ReceiveMessage(messageObjectCaller);
+            await Clients.Others.ReceiveMessage(messageObjectOthers);
         }
 
         /**

@@ -8,7 +8,7 @@ namespace trivia_api.Hubs.Interfaces
 {
     public interface IGlobalChat
     {
-        Task ReceiveMessage(string sender, string message);
+        Task ReceiveMessage(ChatMessage messageObject);
         Task ReceiveMessageObject(ChatMessage messageObject);
         Task BroadcastMessage(string sender, string message);
     }
