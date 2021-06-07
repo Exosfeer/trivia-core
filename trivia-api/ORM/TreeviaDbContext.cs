@@ -18,6 +18,7 @@ namespace trivia_api.ORM
         public DbSet<Account> Account { get; set; }
         public DbSet<Category> Category { get; set; }
         public DbSet<Question> Question { get; set; }
+        public DbSet<trivia_api.Models.Lobby> Lobby { get; set; }
 
     }
 }
