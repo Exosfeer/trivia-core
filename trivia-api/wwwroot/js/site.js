@@ -4,7 +4,7 @@
 // Write your JavaScript code.
 
 const connection = new signalR.HubConnectionBuilder()
-    .withUrl("/hubstandard")
+    .withUrl("/globalchat")
     .configureLogging(signalR.LogLevel.Information)
     .build();
 
