@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using trivia_api.Models;
 using trivia_api.ORM;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace trivia_api.Controllers
 {
@@ -42,6 +44,24 @@ namespace trivia_api.Controllers
             }
 
             return View(account);
+        }
+
+        // GET: Accounts/DetailsJson/5
+        public async Task<String> DetailsJson(string id)
+        {
+            if (id == null)
+            {
+                return "not found";
+            }
+
+            var account = await _context.Account
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (account == null)
+            {
+                return "not found";
+            }
+
+            return JsonConvert.SerializeObject(account);
         }
 
         // GET: Accounts/Json/5
@@ -83,6 +103,27 @@ namespace trivia_api.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(account);
+        }
+
+        // POST: Accounts/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ProducesResponseType(typeof(Account), StatusCodes.Status200OK)]
+        public async Task<IActionResult> CreateJson([FromBody] Account postAccount)
+        {
+
+            if (postAccount != null)
+            {
+                if (ModelState.IsValid)
+                {
+                    EntityEntry<Account> accountEntityEntry = _context.Add(postAccount);
+                    await _context.SaveChangesAsync();
+                    return Ok(accountEntityEntry.Entity);
+                }
+            }
+
+            return BadRequest();
         }
 
         // GET: Accounts/Edit/5
@@ -136,6 +177,40 @@ namespace trivia_api.Controllers
             return View(account);
         }
 
+        // POST: Accounts/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ProducesResponseType(typeof(Account), StatusCodes.Status200OK)]
+        public async Task<IActionResult> EditJson([FromBody] Account postAccount)
+        {
+            if (postAccount != null)
+            {
+                if (ModelState.IsValid)
+                {
+                    try
+                    {
+                        EntityEntry<Account> accountEntityEntry = _context.Update(postAccount);
+                        await _context.SaveChangesAsync();
+
+                        return Ok(accountEntityEntry.Entity);
+                    }
+                    catch (DbUpdateConcurrencyException)
+                    {
+                        if (!AccountExists(postAccount.Id))
+                        {
+                            return NotFound();
+                        }
+                        else
+                        {
+                            throw;
+                        }
+                    }
+                }
+            }
+            return NotFound();
+        }
+
         // GET: Accounts/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
@@ -163,6 +238,24 @@ namespace trivia_api.Controllers
             _context.Account.Remove(account);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        // POST: Accounts/Delete/5
+        [HttpDelete]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> DeleteJsonConfirmed([FromBody] Account postAccount)
+        {
+            if (postAccount != null)
+            {
+                var account = await _context.Account.FindAsync(postAccount.Id);
+                if (account != null)
+                {
+                    _context.Account.Remove(account);
+                    await _context.SaveChangesAsync();
+                    return Ok();
+                }
+            }
+            return NotFound();
         }
 
         private bool AccountExists(string id)
