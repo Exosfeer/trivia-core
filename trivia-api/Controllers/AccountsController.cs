@@ -126,6 +126,29 @@ namespace trivia_api.Controllers
             return BadRequest();
         }
 
+        // POST: Accounts/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ProducesResponseType(typeof(Account), StatusCodes.Status200OK)]
+        public async Task<IActionResult> SignIn([FromBody] Account postAccount)
+        {
+
+            if (postAccount != null)
+            {
+                if (ModelState.IsValid)
+                {
+                    var accountFound = await _context.Account.FirstOrDefaultAsync(m => m.Email == postAccount.Email);
+                    if (accountFound.Password == postAccount.Password)
+                    {
+                        return Ok(accountFound);
+                    }
+                }
+            }
+
+            return NotFound();
+        }
+
         // GET: Accounts/Edit/5
         public async Task<IActionResult> Edit(string id)
         {

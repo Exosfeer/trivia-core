@@ -53,7 +53,7 @@ namespace trivia_api
                             .AllowCredentials()
                             .AllowAnyHeader()
                             .AllowAnyMethod()
-                            .WithOrigins("https://treevia.netlify.app", "https://localhost:3001");
+                            .WithOrigins("https://treevia.netlify.app", "http://localhost:3000", "https://localhost:3001");
                      })
             );
         }
