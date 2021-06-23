@@ -42,8 +42,4 @@
 		<DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.2" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <ProjectReference Include="..\trivia-dal\trivia-dal.csproj" />
-	</ItemGroup>
-
 </Project>
